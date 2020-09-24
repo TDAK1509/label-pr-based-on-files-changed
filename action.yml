@@ -1,0 +1,16 @@
+name: "PR label by files changed"
+description: "Add PR label based on number of files changed"
+author: TDAK <dbcgdhh@gmail.com>
+
+inputs:
+  repo-token:
+    description: "Repo GITHUB_TOKEN"
+    required: true
+
+branding:
+  icon: "tag"
+  color: "green"
+
+runs:
+  using: "node12"
+  main: "index.js"
