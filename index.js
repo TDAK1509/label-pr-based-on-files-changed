@@ -31,6 +31,8 @@ try {
 
   const label = getLabel(filesChanged.length);
 
+  console.log(contextPullRequest, filesChanged, label);
+
   if (label) {
     octokit.issues
       .addLabels({
