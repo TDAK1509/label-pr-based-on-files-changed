@@ -1,0 +1,14 @@
+{
+  "name": "label-pr-size-based-on-files-changed",
+  "version": "1.0.0",
+  "description": "Label PR's size based on number of files changed",
+  "main": "index.js",
+  "repository": "git@github.com:TDAK1509/label-pr-based-on-files-changed.git",
+  "author": "TDAK <dbcgdhh@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  }
+}
