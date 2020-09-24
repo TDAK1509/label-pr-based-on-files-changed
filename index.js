@@ -24,28 +24,30 @@ try {
     auth: repoToken,
   });
 
-  const filesChanged = octokit.pulls.listFiles({
-    ...github.context.repo,
-    pull_number: prNumber,
-  });
+  octokit.pulls
+    .listFiles({
+      ...github.context.repo,
+      pull_number: prNumber,
+    })
+    .then((filesChanged) => {
+      const label = getLabel(filesChanged.length);
 
-  const label = getLabel(filesChanged.length);
+      console.log("Files Changed: ", filesChanged);
 
-  console.log(contextPullRequest, filesChanged, label);
-
-  if (label) {
-    octokit.issues
-      .addLabels({
-        ...github.context.repo,
-        issue_number: prNumber,
-        labels: [label],
-      })
-      .then(() => {
-        console.log(`Label ${label} was automatically added`);
-      });
-  } else {
-    console.log("No label was added.");
-  }
+      if (label) {
+        octokit.issues
+          .addLabels({
+            ...github.context.repo,
+            issue_number: prNumber,
+            labels: [label],
+          })
+          .then(() => {
+            console.log(`Label ${label} was automatically added`);
+          });
+      } else {
+        console.log("No label was added.");
+      }
+    });
 } catch (error) {
   core.setFailed(error.message);
 }
