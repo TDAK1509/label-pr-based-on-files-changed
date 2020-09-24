@@ -30,9 +30,9 @@ try {
       pull_number: prNumber,
     })
     .then((filesChanged) => {
-      const label = getLabel(filesChanged.length);
+      const label = getLabel(filesChanged.data.length);
 
-      console.log("Files Changed: ", filesChanged);
+      console.log("Files Changed: ", filesChanged.data.length);
 
       if (label) {
         octokit.issues
