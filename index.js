@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+
 const SMALL_RANGE = [1, 6];
 const MEDIUM_RANGE = [7, 13];
 const LABEL_BIG = `Big PR: > ${MEDIUM_RANGE[1]}`;
@@ -16,6 +17,7 @@ try {
   }
 
   const prNumber = contextPullRequest.number;
+  const repoToken = core.getInput("repo-token");
 
   const octokit = new github.GitHub(repoToken);
 
