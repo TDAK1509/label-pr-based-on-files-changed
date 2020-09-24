@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+const { Octokit } = require("@octokit/rest");
 
 const SMALL_RANGE = [1, 6];
 const MEDIUM_RANGE = [7, 13];
@@ -19,7 +20,9 @@ try {
   const prNumber = contextPullRequest.number;
   const repoToken = core.getInput("repo-token");
 
-  const octokit = new github.GitHub(repoToken);
+  const octokit = new Octokit({
+    auth: repoToken,
+  });
 
   const filesChanged = octokit.pulls.listFiles({
     ...github.context.repo,
