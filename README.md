@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Add label based on PR's files changed
-      uses: TDAK1509/label-pr-based-on-files-changed@v1.2
+      uses: TDAK1509/label-pr-based-on-files-changed@v1.6
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
